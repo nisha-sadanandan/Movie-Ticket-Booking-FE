@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 const UserNavbar = () => {
   const navLinks = [
     {
-      path: "/movies",
+      path: "/user/movies",
       value: "Movie",
     },
     {
-      path: "/theater",
+      path: "/user/Theaters",
       value: "Theater",
+    },
+
+    {
+      path: "/",
+      value: "Signout",
     },
   ];
   return (
     <div className="flex items-center justify-between p-4 shadow-lg bg-gray">
-    <Link to="/admin/dashboard">
       <h1 className="text-red-600 italic text-2xl">SHOWTIME</h1>
-    </Link>
     <ul className="flex items-center gap-x-5">
       {navLinks.map((link, index) => (
         <Link key={index} to={link.path}>

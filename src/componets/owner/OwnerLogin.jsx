@@ -6,7 +6,7 @@ import axios from "axios"
 import { Link,useNavigate } from "react-router-dom";
 
 
-let userSchema = yup.object({
+let ownerSchema = yup.object({
   email: yup.string().email(),
   password: yup.string().min(6),
 
@@ -15,7 +15,7 @@ let userSchema = yup.object({
      const OwnerLogin = () => {
       const navigate = useNavigate();
         const {register,handleSubmit,formState:{errors}} = useForm({
-          resolver: yupResolver(userSchema),
+          resolver: yupResolver(ownerSchema),
         })
         const onSubmit = async (data) => {
           try {
@@ -24,7 +24,7 @@ let userSchema = yup.object({
               data,
             );
             console.log(res.data);
-            navigate("/owner/ownerhome")
+            navigate("/owner")
 
           } catch (error) {
             console.log(error);
@@ -47,7 +47,7 @@ let userSchema = yup.object({
        <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-700 text-white'/>
        <p>
         Don't have an account?{" "}
-        <Link to="/user/signup" className="text-blue-500 underline">
+        <Link to="/user/signup" className="text-red-500 underline">
           Create new account
         </Link>
       </p>

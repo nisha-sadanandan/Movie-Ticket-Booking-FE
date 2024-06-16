@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
-import AdminNavbar from "../navbar/AdminNavbar.jsx";
-import AdminOverview from "../admin/AdminOverview.jsx"
+import AdminNavbar from "../navbar/AdminNavbar.jsx"
+
+
+
 
 const AdminLayout = () => {
   return (
@@ -8,7 +10,6 @@ const AdminLayout = () => {
       <nav>
         <AdminNavbar/>
       </nav>
-      <AdminOverview/>
       <Outlet />
     </>
   );

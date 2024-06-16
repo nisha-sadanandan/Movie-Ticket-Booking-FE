@@ -24,7 +24,7 @@ let userSchema = yup.object({
               data,
             );
             console.log(res.data);
-            navigate("/user/userhome")
+            navigate("/user")
 
            
           } catch (error) {

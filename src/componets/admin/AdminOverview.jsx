@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect,useState } from 'react'
 import { Grid, GridItem,SimpleGrid,Box, Center } from '@chakra-ui/react'
 import { Heading, Button,Stack } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+
 
 
 const AdminOverview =()=>{
@@ -32,13 +32,13 @@ const AdminOverview =()=>{
 
    <div>
 
-<Grid 
+{/* <Grid 
   templateAreas={`"header header"`}
   gridTemplateRows={'50px 1fr 30px'}>
   <GridItem pl='2'  area={'header'} fontSize='4xl' color="cyan.900" display="flex" alignItems="center" justifyContent="center">
   WELCOME ADMIN
   </GridItem>
-</Grid>
+</Grid> */}
 
 <SimpleGrid
   bg='gray.50'

@@ -5,6 +5,7 @@ import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
+  
 } from "react-router-dom";
 import SignupPage from "./pages/user/SignupPage.jsx";
 import LoginPage from "./pages/user/LoginPage.jsx"
@@ -17,6 +18,11 @@ import HomeLayout from './componets/Layout/HomeLayout.jsx';
 import UserLayout from "./componets/Layout/UserLayout.jsx"
 import AdminLayout from './componets/Layout/AdminLayout.jsx';
 import OwnerLayout from "./componets/Layout/OwnerLayout.jsx"
+import UserMoviePage from "./pages/user/UserMoviePage.jsx";
+import AdminShowPage from './pages/admin/AdminShowPage.jsx';
+import AdminOverviewPage from './pages/admin/AdminOverviewPage.jsx';
+import Movie from './componets/user/Movie.jsx';
+import MovieDetail from './componets/user/movieDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,24 +62,89 @@ const router = createBrowserRouter([
 ]
 },
 
-
 {
   element:<AdminLayout/>,
-  path:"/admin/adminhome",
-  
+  path: "/admin",
+  children:[
+
+    {
+      path: "/admin/addshow",
+      element: <AdminShowPage/>
+    },
+
+    {
+      path: "/admin/overview",
+      element: <AdminOverviewPage/>
+    },
+
+
+
+
+   
+
+
+  ]
 },
 
-{
-  element:<UserLayout/>,
-  path:"/user/userhome",
-  
-},
+
+
+
+{ element:<UserLayout/>,
+  path: "/user",
+  children:[
+
+    {
+
+      path: "/user",
+      element:<Movie/>,
+    
+    },
+
+    {
+
+      path: "/user/:movieid",
+      element:<MovieDetail/>,
+    
+    },
 
 {
+
+  path: "/user/movies",
+  element:<UserMoviePage/>,
+
+},
+
+]
+},
+
+  
+
+
+{ 
+  
   element:<OwnerLayout/>,
-  path:"/owner/ownerhome",
-  
-},
+  path: "/owner",
+  children:[
+
+
+
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
