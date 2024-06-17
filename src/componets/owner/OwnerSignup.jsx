@@ -22,7 +22,7 @@ let ownerSchema = yup.object({
         const onSubmit = async (data) => {
           try {
             const res = await axios.post(
-              "http://localhost:3000/api/v1/theater/owner-signup",
+              "http://localhost:3000/api/v1/owner/signup",
               data,
             );
             console.log(res.data);
@@ -51,7 +51,7 @@ let ownerSchema = yup.object({
          className='px-2 py-1 border rounded-2xl'/>
         {errors.password && <p>{errors.password.message}</p>}
 
-       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-orange-700 text-white'/>
+       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-700 text-white'/>
        <p>
          Already have an account?{" "}
         <Link to="/owner/login" className="text-red-500 underline">

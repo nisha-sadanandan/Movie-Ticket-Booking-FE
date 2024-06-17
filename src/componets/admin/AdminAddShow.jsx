@@ -105,6 +105,7 @@ const AdminAddShow = () => {
             type="date"
             className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+           {errors.date && <span className="text-red-500 text-sm">Please select a date</span>}
           </div>
           <div className="mb-4">
           <label htmlFor="showtime" className="block text-sm font-medium mb-2">Show Time:</label>
@@ -113,18 +114,20 @@ const AdminAddShow = () => {
             type="time"
             className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
+           {errors.showtime && <span className="text-red-500 text-sm">Please add Showtime</span>}
           </div>
           <div className="mb-4">
           <label htmlFor="price" className="block text-sm font-medium mb-2">Price:</label>
           <input
             {...register('price', { required: true ,pattern: /^\d+(\.\d{2})?$/ })}
             type="number"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"   
           />
+           {errors.price && <span className="text-red-500 text-sm">Please add Price</span>}
+           </div>
           <button type="submit" disabled={errors.title|| errors.theatername || errors.date || errors.showtime || errors.price}>
           Submit
         </button>
-          </div>
           </form>
           </div>
 

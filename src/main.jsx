@@ -23,12 +23,24 @@ import AdminShowPage from './pages/admin/AdminShowPage.jsx';
 import AdminOverviewPage from './pages/admin/AdminOverviewPage.jsx';
 import Movie from './componets/user/Movie.jsx';
 import MovieDetail from './componets/user/movieDetails.jsx';
+import Home from './componets/home/Home.jsx';
+import AdminHome from './componets/admin/AdminHome.jsx';
+import OwnerHome from './componets/owner/OwnerHome.jsx';
+import UserTheaterPage from './pages/user/UserTheaterPage.jsx';
+import OwnerTheaterPage from "./pages/owner/OwnerTheaterPage.jsx"
 
 const router = createBrowserRouter([
   {
     element:<HomeLayout/>,
     path:"/",
     children:[
+
+
+  {
+        path: "/",
+        element: <Home/>
+ },
+      
    
   {
     path: "/user/signup",
@@ -66,6 +78,11 @@ const router = createBrowserRouter([
   element:<AdminLayout/>,
   path: "/admin",
   children:[
+
+    {
+      path: "/admin",
+      element: <AdminHome/>
+    },
 
     {
       path: "/admin/addshow",
@@ -114,6 +131,14 @@ const router = createBrowserRouter([
 
 },
 
+{
+
+  path: "/user/Theaters",
+  element:<UserTheaterPage/>,
+
+},
+
+
 ]
 },
 
@@ -125,6 +150,22 @@ const router = createBrowserRouter([
   element:<OwnerLayout/>,
   path: "/owner",
   children:[
+
+
+    {
+
+      element:<OwnerHome/>,
+      path: "/owner",
+    
+    },
+
+    {
+
+      element:<OwnerTheaterPage/>, 
+      path: "/owner/addtheater",
+    
+    },
+
 
 
 

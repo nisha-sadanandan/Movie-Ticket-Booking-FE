@@ -20,7 +20,7 @@ let ownerSchema = yup.object({
         const onSubmit = async (data) => {
           try {
             const res = await axios.post(
-              "http://localhost:3000/api/v1/theater/owner-login",
+              "http://localhost:3000/api/v1/owner/login",
               data,
             );
             console.log(res.data);

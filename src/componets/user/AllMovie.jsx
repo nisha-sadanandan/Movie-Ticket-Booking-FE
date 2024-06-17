@@ -35,7 +35,7 @@ return(
         <List spacing={4}>
           {movies.map((movie) => (
             <ListItem key={movie.id}>
-              <Box width="100%" >
+              <Box width="100%">
                 <Image
                   boxSize="220px"
                   objectFit="cover"
