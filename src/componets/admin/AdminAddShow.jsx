@@ -54,8 +54,8 @@ const AdminAddShow = () => {
           "http://localhost:3000/api/v1/admin/add-moviebyadmin",
           data,
         );
-        alert("submission suceessful")
         console.log(res.data);
+        alert("submission suceessful")
         // navigate("/admin/login")
        
       } catch (error) {
@@ -97,6 +97,21 @@ const AdminAddShow = () => {
             ))}
           </select>
           {errors.theatername && <span className="text-red-500 text-sm">Please select a theater</span>}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="location" className="block text-sm font-medium mb-2">Location:</label>
+          <select
+            {...register('location', { required: true })} // Register theater ID
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="">Select Location</option>
+            {theater.map((theaters,index) => (
+              <option key={index}>
+                {theaters.location}
+              </option>
+            ))}
+          </select>
+          {errors.location && <span className="text-red-500 text-sm">Please select a location</span>}
         </div>
         <div className="mb-4">
           <label htmlFor="date" className="block text-sm font-medium mb-2">Date:</label>

@@ -28,6 +28,7 @@ import AdminHome from './componets/admin/AdminHome.jsx';
 import OwnerHome from './componets/owner/OwnerHome.jsx';
 import UserTheaterPage from './pages/user/UserTheaterPage.jsx';
 import OwnerTheaterPage from "./pages/owner/OwnerTheaterPage.jsx"
+import OwnerShowPage from './pages/owner/OwnerShowPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -166,7 +167,12 @@ const router = createBrowserRouter([
     
     },
 
+    {
 
+      element:<OwnerShowPage/>, 
+      path: "/owner/addshow",
+    
+    },
 
 
   ]
