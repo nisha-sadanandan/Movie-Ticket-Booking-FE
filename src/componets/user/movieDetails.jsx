@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'; 
 import { Card, CardHeader, CardBody, CardFooter,Stack,Heading,Button,Text,Image } from '@chakra-ui/react'
 
@@ -9,6 +10,8 @@ import { Card, CardHeader, CardBody, CardFooter,Stack,Heading,Button,Text,Image 
 const MovieDetail = () => {
   const [movies, setMovie] = useState([]);
   const { movieid } = useParams(); 
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -24,10 +27,15 @@ const MovieDetail = () => {
     fetchMovie();
   }, [movieid]); 
 
-//   const handleBookClick = () => {
+  const handleRatingClick = (movieid) => {
   
-//     alert('Booking functionality not yet implemented!');
-//   };
+        navigate(`/user/${movieid}/rating`)
+  };
+
+  const handleBookingClick = (movieid) => {
+  
+    navigate(`/user/${movieid}/showlisting`)
+};
 
   return (
 
@@ -58,12 +66,12 @@ const MovieDetail = () => {
       <Text py='2'size='md' mb="3">
        {movies.genre} 
       </Text>
-      <Button variant='solid' colorScheme='gray'>
+      <Button variant='solid' colorScheme='gray' onClick={() => handleRatingClick(movies._id)}  >
         Rate Us
       </Button>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='red'>
+      <Button variant='solid' colorScheme='red' onClick={() => handleBookingClick(movies._id)}>
         Book Tickets
       </Button>
     </CardFooter>

@@ -29,6 +29,9 @@ import OwnerHome from './componets/owner/OwnerHome.jsx';
 import UserTheaterPage from './pages/user/UserTheaterPage.jsx';
 import OwnerTheaterPage from "./pages/owner/OwnerTheaterPage.jsx"
 import OwnerShowPage from './pages/owner/OwnerShowPage.jsx';
+import RatingMovie from './componets/user/RatingMovie.jsx';
+import MovieDescription from './componets/user/MovieDescription.jsx';
+import ShowListing from "./componets/user/ShowListing.jsx"
 
 const router = createBrowserRouter([
   {
@@ -121,7 +124,21 @@ const router = createBrowserRouter([
     {
 
       path: "/user/:movieid",
-      element:<MovieDetail/>,
+      element:<MovieDescription/>,
+    
+    },
+
+    {
+
+      path: "/user/:movieid/rating",
+      element:<RatingMovie/>,
+    
+    },
+
+    {
+
+      path: "/user/:movieid/showlisting",
+      element:<ShowListing/>,
     
     },
 
@@ -177,13 +194,6 @@ const router = createBrowserRouter([
 
   ]
 }
-
-
-
-
-
-
-
 
 
 
