@@ -32,9 +32,9 @@ const MovieDetail = () => {
         navigate(`/user/${movieid}/rating`)
   };
 
-  const handleBookingClick = (movieid) => {
+  const handleBookingClick = (title) => {
   
-    navigate(`/user/${movieid}/showlisting`)
+    navigate(`/user/${movieid}/showlisting/${title}`)
 };
 
   return (
@@ -71,7 +71,7 @@ const MovieDetail = () => {
       </Button>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='red' onClick={() => handleBookingClick(movies._id)}>
+      <Button variant='solid' colorScheme='red' onClick={() => handleBookingClick(movies.title)}>
         Book Tickets
       </Button>
     </CardFooter>

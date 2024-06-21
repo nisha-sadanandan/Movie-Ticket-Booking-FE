@@ -32,6 +32,7 @@ import OwnerShowPage from './pages/owner/OwnerShowPage.jsx';
 import RatingMovie from './componets/user/RatingMovie.jsx';
 import MovieDescription from './componets/user/MovieDescription.jsx';
 import ShowListing from "./componets/user/ShowListing.jsx"
+import SeatSelection from './componets/user/SeatSelection.jsx';
 
 const router = createBrowserRouter([
   {
@@ -137,10 +138,18 @@ const router = createBrowserRouter([
 
     {
 
-      path: "/user/:movieid/showlisting",
+      path: "/user/:movieid/showlisting/:title",
       element:<ShowListing/>,
     
     },
+
+    {
+
+      path: "/user/:movieid/showlisting/:title/seat",
+      element:<SeatSelection/>,
+    
+    },
+
 
 {
 
