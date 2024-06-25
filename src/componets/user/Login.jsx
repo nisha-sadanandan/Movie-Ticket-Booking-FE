@@ -20,7 +20,7 @@ let userSchema = yup.object({
         const onSubmit = async (data) => {
           try {
             const res = await axios.post(
-              "http://localhost:3000/api/v1/users/login",
+              "https://movie-ticket-booking-serverside.onrender.com/api/v1/users/login",
               data,
             );
             console.log(res.data);

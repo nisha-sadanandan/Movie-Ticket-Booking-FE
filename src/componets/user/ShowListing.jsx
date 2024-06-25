@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 const ShowListing = () => {
 
   const [show, setShow] = useState([]);
@@ -14,12 +15,14 @@ const ShowListing = () => {
 
   const navigate = useNavigate();
 
-    
+
+
+ 
     useEffect(() => {
 
       const fetchShow = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/api/v1/show/${title}/get-show`); 
+          const response = await axios.get(`https://movie-ticket-booking-serverside.onrender.com/api/v1/show/${title}/get-show`); 
           setShow(response.data);
         } catch (error) {
           console.error('Error fetching show:', error);
@@ -31,9 +34,9 @@ const ShowListing = () => {
     }, [title]);
 
 
-    const handleTimeClick = (showid) => {
+    const handleTimeClick = (theatername) => {
   
-      navigate(`/user/${movieid}/showlisting/${title}/seat/${showid}`)
+      navigate(`./seat/${theatername}`)
 };
 
   return (
@@ -60,7 +63,7 @@ const ShowListing = () => {
         </Text>
         <Stack direction='row' spacing={4} align='center'>
         <Tooltip label={shows.price} aria-label='A tooltip'>
-  <Button colorScheme='teal' variant='outline' onClick={() => handleTimeClick(shows.id)}>
+  <Button colorScheme='red' variant='outline' onClick={() => handleTimeClick(shows.theatername)}>
   {shows.showtime}
   </Button>
   </Tooltip>
@@ -73,6 +76,20 @@ const ShowListing = () => {
 </div>
    ))}
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   )
 }
 

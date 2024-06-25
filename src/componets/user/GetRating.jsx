@@ -17,7 +17,7 @@ const GetRating = () => {
         const getRateReview =async()=>{
             try {
 
-                const res = await axios.get(`http://localhost:3000/api/v1/movie/${movieid}/get-review`)
+                const res = await axios.get(`https://movie-ticket-booking-serverside.onrender.com/api/v1/movie/${movieid}/get-review`)
                 const data = await res.data;
                 console.log("review" ,data)
                 setReview(data)

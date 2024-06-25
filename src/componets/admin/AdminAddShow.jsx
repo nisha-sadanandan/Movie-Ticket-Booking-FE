@@ -17,7 +17,7 @@ const AdminAddShow = () => {
         const getMovies = async()=>{
             try {
 
-                const res = await axios.get("http://localhost:3000/api/v1/movie/get-movie")
+                const res = await axios.get("https://movie-ticket-booking-serverside.onrender.com/api/v1/movie/get-movie")
                 const data = await res.data
                 console.log("movies",data)
                 setMovies(data)  
@@ -34,7 +34,7 @@ const AdminAddShow = () => {
         const gettheater = async()=>{
             try {
 
-                const res = await axios.get("http://localhost:3000/api/v1/theater/get-theater")
+                const res = await axios.get("https://movie-ticket-booking-serverside.onrender.com/api/v1/theater/get-theater")
                 const data = await res.data
                 console.log("theater",data)
                 setTheater(data)
@@ -51,7 +51,7 @@ const AdminAddShow = () => {
      const onSubmit = async (data) => {
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/v1/admin/add-moviebyadmin",
+          "https://movie-ticket-booking-serverside.onrender.com/api/v1/admin/add-moviebyadmin",
           data,
         );
         console.log(res.data);
