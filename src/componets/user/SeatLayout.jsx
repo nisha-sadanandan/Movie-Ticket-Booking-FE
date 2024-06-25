@@ -18,7 +18,7 @@ const SeatLayout = () => {
 
       const fetchShow = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/api/v1/show/${showid}/getshow`); 
+          const response = await axios.get(`https://movie-ticket-booking-serverside.onrender.com/api/v1/show/${showid}/getshow`); 
           setShow(response.data);
         } catch (error) {
           console.error('Error fetching show:', error);
@@ -62,7 +62,7 @@ const SeatLayout = () => {
         seat:seat
       }
       const res = await axios.post(
-        `http://localhost:3000/api/v1/booking/reserve-seat`,
+        `https://movie-ticket-booking-serverside.onrender.com/api/v1/booking/reserve-seat`,
         data,
       );
       console.log(res.data);
