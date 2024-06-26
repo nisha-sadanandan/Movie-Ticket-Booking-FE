@@ -62,7 +62,7 @@ const SeatLayout = () => {
         seat:seat
       }
       const res = await axios.post(
-        `https://movie-ticket-booking-serverside.onrender.com/api/v1/booking/reserve-seat`,
+        `http://localhost:3000/api/v1/booking/reserve-seat`,
         data,
       );
       console.log(res.data);
@@ -79,64 +79,60 @@ const SeatLayout = () => {
 
 
   const paymentHandler = async (event) => {
+  
+    const response = await axios.post(
+      "http://localhost:3000/api/v1/payment/order",
+      { amount:price },
+    );
 
-  const response = await axios.post(
-    "http://localhost:3000/api/v1/payment/paymentorder",
-    { amount:price },
-  );
+    const order = await response.data.data;
+    console.log(order);
+    const option = {
+      key: import.meta.env.VITE_SOME_KEY,
+      amount: order.amount,
+      currency: order.currency,
+      name: "Nisha",
+      description: "Test Transaction",
+      image: "https://i.ibb.co/5Y3m33n/test.png",
+      order_id: order.id,
+      handler: async function (response) {
+        const body = { ...response };
 
-  const order = await response.data.data;
-  console.log(order);
-  const option = {
-    key: import.meta.env.VITE_SOME_KEY,
-    amount: order.amount,
-    currency: order.currency,
-    name: "NISHA",
-    description: "Ticket Transaction",
-    image: "https://i.ibb.co/5Y3m33n/test.png",
-    order_id: order.id,
-    handler: async function (response) {
-      const body = { ...response };
+        const validateResponse = await axios.post(
+          "http://localhost:3000/api/v1/payment/verify",
+          body,
+        );
 
-      const validateResponse = await axios.post(
-        "http://localhost:3000/api/v1/payment/paymentverify",
-        body,
-      );
+        const jsonResponse = await validateResponse;
 
-      const jsonResponse = await validateResponse;
+        console.log("jsonResponse", jsonResponse);
+      },
+      prefill: {
+        name: "Nisha",
+        email: "nishanaveen@example.com",
+        contact: "00000000",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
-      console.log("jsonResponse", jsonResponse);
-    },
-    prefill: {
-      name: "nisha",
-      email: "asnisha1r@example.com",
-      contact: "00000000",
-    },
-    notes: {
-      address: "Razorpay Corporate Office",
-    },
-    theme: {
-      color: "#3399cc",
-    },
+    const rzp1 = new window.Razorpay(option);
+
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+    });
+
+    rzp1.open();
+    event.preventDefault();
   };
 
-  const rzp1 = new window.Razorpay(option);
-
-  rzp1.on("payment.failed", function (response) {
-    alert(response.error.code);
-  });
-
-  rzp1.open();
-  event.preventDefault();
-};
 
 
 
-
-
-
-
-    
   return (
     
     <div className="container mx-auto mt-8">
@@ -175,7 +171,7 @@ const SeatLayout = () => {
     </div>
     <div className='flex justify-center'>
     <button className="btn btn-primary m-4 p-2 flex bg-gray-500 text-white"  onClick={() => paymentHandler()}>
-      PayNow {price}
+      PayNow {price}Rs
     </button>
     </div>
   </div>
