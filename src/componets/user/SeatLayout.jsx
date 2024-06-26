@@ -62,7 +62,7 @@ const SeatLayout = () => {
         seat:seat
       }
       const res = await axios.post(
-        `http://localhost:3000/api/v1/booking/reserve-seat`,
+        `https://movie-ticket-booking-serverside.onrender.com/api/v1/booking/reserve-seat`,
         data,
       );
       console.log(res.data);
@@ -81,7 +81,7 @@ const SeatLayout = () => {
   const paymentHandler = async (event) => {
   
     const response = await axios.post(
-      "http://localhost:3000/api/v1/payment/order",
+      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
       { amount:price },
     );
 
@@ -99,7 +99,7 @@ const SeatLayout = () => {
         const body = { ...response };
 
         const validateResponse = await axios.post(
-          "http://localhost:3000/api/v1/payment/verify",
+          "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/verify",
           body,
         );
 
