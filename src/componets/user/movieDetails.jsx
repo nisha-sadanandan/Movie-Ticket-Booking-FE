@@ -44,6 +44,8 @@ const MovieDetail = () => {
   direction={{ base: 'column', sm: 'row' }}
   overflow='hidden'
   variant='outline'
+    p='10' mt={4}
+    bg="black"
   
 >
   <Image
@@ -55,15 +57,15 @@ const MovieDetail = () => {
 
   <Stack>
   <CardHeader>
-    <Heading size='xl'>{movies.title}</Heading>
+    <Heading size='xl' color='gray.50'>{movies.title}</Heading>
   </CardHeader>
     <CardBody>
-      <Heading size='md' mb="2">{movies.releasedate}</Heading>
+      <Heading size='md' mb="2" color='gray.50' >{movies.releasedate}</Heading>
 
-      <Text py='2'size='md' mb="2">
+      <Text py='2'size='md' mb="2" color='gray.50'>
       {movies.duration}  
       </Text>
-      <Text py='2'size='md' mb="3">
+      <Text py='2'size='md' mb="3" color='gray.50'>
        {movies.genre} 
       </Text>
       <Button variant='solid' colorScheme='gray' onClick={() => handleRatingClick(movies._id)}  >

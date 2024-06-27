@@ -3,7 +3,6 @@ import AdminNavbar from "../navbar/AdminNavbar.jsx"
 
 
 
-
 const AdminLayout = () => {
   return (
     <>
@@ -11,6 +10,7 @@ const AdminLayout = () => {
         <AdminNavbar/>
       </nav>
       <Outlet />
+     
     </>
   );
 };

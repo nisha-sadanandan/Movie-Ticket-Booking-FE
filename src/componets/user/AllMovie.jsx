@@ -1,11 +1,14 @@
 import React, { useState,useEffect} from "react";
-import { Box, Heading, Text, List, ListItem, Image} from '@chakra-ui/react';
 import axios from "axios";
+import { Box, Heading, Text, Grid, GridItem, Image, Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 
 const AllMovie =()=>{
 
 const [movies,setMovie] = useState([])
+const navigate = useNavigate();
+
 
 useEffect(()=>{
 
@@ -24,37 +27,42 @@ useEffect(()=>{
     getMovie()
 },[]);
 
+const handleMovieClick = (movieid) => {
+  navigate(`/user/${movieid}`);
+};
+
 return(
 
 <div>
-<Box p={4}>
+<Box px={4} mt={8} >
       <Heading as="h2" size="lg" mb={4}>
         Movies
       </Heading>
       {movies.length > 0 ? (
-        <List spacing={4}>
-          {movies.map((movie) => (
-            <ListItem key={movie.id}>
-              <Box width="100%">
+        <Grid gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap={4}>
+          {movies.map((movie,index) => (
+            <GridItem key={index} onClick={() => handleMovieClick(movie._id)}>
+              <Box display="flex" flexDirection="column" alignItems="center" cursor="pointer" >
                 <Image
-                  boxSize="220px"
+                  boxSize="200px" 
                   objectFit="cover"
-                  borderRadius="md"
+                  borderRadius="lg"
                   src={movie.image}
                   alt={movie.title}
-                  mr={4}
+                  mb={2}
+                  h="300px"
                 />
-                <Box>
-                </Box>
+
               </Box>
-            </ListItem>
+            </GridItem>
           ))}
-        </List>
+        </Grid>
       ) : (
         <Text>No movies found.</Text>
       )}
     </Box>
-      </div>
+    </div>
+   
 
 )
 

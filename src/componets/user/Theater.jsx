@@ -29,6 +29,7 @@ const Theater = () => {
     <Heading size='lg'>Theaters</Heading>
   </CardHeader>
   <CardBody>
+     <Stack divider={<StackDivider />} spacing='4'>
   {theater.map((theaters,index) => (
     <Stack divider={<StackDivider />} spacing='4' key={index}  p={6}>
       <Box>
@@ -41,6 +42,7 @@ const Theater = () => {
       </Box>
     </Stack>
     ))}
+     </Stack>
   </CardBody>
 
 </Card>

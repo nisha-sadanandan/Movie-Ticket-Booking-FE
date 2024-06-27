@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import UserNavbar from "../navbar/UserNavbar.jsx";
-import Movie from "../../componets/user/Movie.jsx"
+
 
 const UserLayout = () => {
   return (
@@ -8,8 +8,7 @@ const UserLayout = () => {
       <nav>
         <UserNavbar/>
       </nav>
-      <Outlet />
-      
+      <Outlet />  
     </>
   );
 };

@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 
 
 
+
+
+
+
 const SEAT_COUNT = 100;
 
 const SeatLayout = () => {
@@ -79,16 +83,17 @@ const SeatLayout = () => {
 
 
   const paymentHandler = async (event) => {
-  
     const response = await axios.post(
-      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
+      "http://localhost:3000/api/v1/payment/order",
       { amount:price },
     );
 
     const order = await response.data.data;
     console.log(order);
+
+
     const option = {
-      key: import.meta.env.VITE_SOME_KEY,
+      key: import.meta.env.RAZORPAY_KEY_ID,
       amount: order.amount,
       currency: order.currency,
       name: "Nisha",
@@ -98,8 +103,9 @@ const SeatLayout = () => {
       handler: async function (response) {
         const body = { ...response };
 
+
         const validateResponse = await axios.post(
-          "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/verify",
+          "http://localhost:3000/api/v1/payment/verify",
           body,
         );
 
@@ -120,6 +126,7 @@ const SeatLayout = () => {
       },
     };
 
+   
     const rzp1 = new window.Razorpay(option);
 
     rzp1.on("payment.failed", function (response) {
@@ -133,12 +140,13 @@ const SeatLayout = () => {
 
 
 
+
   return (
     
     <div className="container mx-auto mt-8">
       <h1>{show.totalprice}</h1>
     <button className="btn btn-primary m-4 p-2 flex bg-green-800 text-white"   onClick={() => handleConfirm()}>
-      Confirm Seats 
+      Confirm Seats {}
     </button>
  
     <div className=" flex flex-wrap justify-center gap-5"> 

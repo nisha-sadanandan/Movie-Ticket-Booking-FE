@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Heading, Text, Grid, GridItem, Image, Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import banner from "../images/banner.jpeg"
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -26,7 +27,12 @@ const MovieList = () => {
   };
 
   return (
-    <Box p={4}>
+    <div>
+      <div className=''>
+        <img src={banner}alt='banner'/>
+      </div>
+    <div>
+    <Box px={4} mt={8} >
       <Heading as="h2" size="lg" mb={4}>
         Recommended Movies
       </Heading>
@@ -34,14 +40,15 @@ const MovieList = () => {
         <Grid gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap={4}>
           {movies.map((movie,index) => (
             <GridItem key={index} onClick={() => handleMovieClick(movie._id)}>
-              <Box display="flex" flexDirection="column" alignItems="center" cursor="pointer">
+              <Box display="flex" flexDirection="column" alignItems="center" cursor="pointer" >
                 <Image
-                  boxSize="200px" 
+                  boxSize="230px" 
                   objectFit="cover"
                   borderRadius="lg"
                   src={movie.image}
                   alt={movie.title}
                   mb={2}
+                  h="300px"
                 />
 
               </Box>
@@ -52,6 +59,8 @@ const MovieList = () => {
         <Text>No movies found.</Text>
       )}
     </Box>
+    </div>
+    </div>
   );
 };
 

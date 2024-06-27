@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import OwnerNavbar from "../navbar/OwnerNavbar.jsx";
 
 
+
 const OwnerLayout = () => {
   return (
     <>
@@ -9,6 +10,7 @@ const OwnerLayout = () => {
         <OwnerNavbar/>
       </nav>
       <Outlet />
+
     </>
   );
 };

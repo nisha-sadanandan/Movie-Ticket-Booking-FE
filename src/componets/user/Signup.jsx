@@ -41,25 +41,23 @@ let userSchema = yup.object({
        
        
   return (
-       
-    <div className='flex justify-center items-center h-screen'>
-         
-         <form className='flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
-
+    <div>
+       <div className='flex justify-center items-center h-screen'> 
+        <form className='flex flex-col gap-3  border-2w-full w-1/4' onSubmit={handleSubmit(onSubmit)}>
         <input {...register('name')}
         placeholder='name' type='text'
-         className='px-1.5 py-1 border rounded-2xl' />
+         className='px-1.5 py-1 border rounded-2xl border-neutral-500' />
               {errors.name && <p>{errors.name.message}</p>}
 
         <input {...register('email')} placeholder='email' type='email'
-         className='px-1.5 py-1 border rounded-2xl'/>
+         className='px-1.5 py-1 border  rounded-2xl border-neutral-500'/>
          {errors.email && <p>{errors.email.message}</p>}   
 
         <input {...register('password')} placeholder='password'  type='password'
-         className='px-2 py-1 border rounded-2xl'/>
+         className='px-2 py-1 border  rounded-2xl border-neutral-500'/>
         {errors.password && <p>{errors.password.message}</p>}
 
-       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-600 text-white cursor-pointer'/>
+       <input type="submit" placeholder='Submit' className='px-2 py-1 border-2  rounded-2xl bg-red-600 text-white cursor-pointer'/>
        <p>
          Already have an account?{" "}
         <Link to="/user/login" className="text-red-500 underline">
@@ -68,6 +66,7 @@ let userSchema = yup.object({
         </p>
   </form>
   </div>
+  // </div> 
   )
 }
 

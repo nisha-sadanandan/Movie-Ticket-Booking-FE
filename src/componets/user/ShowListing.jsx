@@ -34,24 +34,21 @@ const ShowListing = () => {
     }, [title]);
 
 
-    const handleTimeClick = (theatername) => {
+    const handleTimeClick = (showid) => {
   
-      navigate(`./seat/${theatername}`)
+      navigate(`./seat/${showid}`)
 };
 
   return (
     <div>
     {show.map((shows,index) => (
     <div key={index}> 
-  <Stack direction='row' h='100px' p={4}>
   <Divider orientation='vertical' />
   <Text>{shows.title}</Text>
-</Stack>
 <Card>
   <CardHeader>
     <Button>{shows.date}</Button>
   </CardHeader>
-
   <CardBody>
     <Stack divider={<StackDivider />} spacing='4'>
       <Box>
@@ -63,7 +60,7 @@ const ShowListing = () => {
         </Text>
         <Stack direction='row' spacing={4} align='center'>
         <Tooltip label={shows.price} aria-label='A tooltip'>
-  <Button colorScheme='red' variant='outline' onClick={() => handleTimeClick(shows.theatername)}>
+  <Button colorScheme='red' variant='outline' marginTop={3}  w={100} onClick={() => handleTimeClick(shows._id)}>
   {shows.showtime}
   </Button>
   </Tooltip>

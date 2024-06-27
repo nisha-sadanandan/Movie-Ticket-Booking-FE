@@ -1,7 +1,8 @@
 import React,{ useState, useEffect } from 'react'
 import axios from "axios"
-import { Card, CardHeader, CardBody, CardFooter,Flex,Avatar,Box,Heading,Text} from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter,Flex,Avatar,Box,Heading,Text,Spacer,SimpleGrid} from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'; 
+
 
 
 
@@ -33,20 +34,18 @@ const GetRating = () => {
 
   return (
     <div>
+      <h1 className='text-3xl m-8 font-semibold'>Top Reviews</h1>
+      <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(380px, 1fr))'>
         {review.map((reviews,index) => (
-    <Card key={index} maxW='sm'>
-   
-        
+    <Card key={index}  p={5} border='1px'  borderColor='gray.200' m={5}  >      
   <CardHeader>
     <Flex spacing='4'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
         <Avatar src='https://bit.ly/broken-link'/>
-
-        <Box>
-        
+        <Box>     
           <Heading  size='sm'>{reviews.username}</Heading>
-      
         </Box>
+        <Spacer />
       </Flex>
       <Text>Rating : {reviews.rating}/5</Text>
     </Flex>
@@ -58,6 +57,7 @@ const GetRating = () => {
   </CardBody>
 </Card>
    ))}
+   </SimpleGrid>
 </div>
   )
 }
