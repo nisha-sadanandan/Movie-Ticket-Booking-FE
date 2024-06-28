@@ -65,14 +65,15 @@ const AdminAddShow = () => {
 
   return (
 
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Add Show</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="container mx-auto px-4 py-8 ">
+      <h1 className="text-2xl font-bold mb-4 text-center">Add Show</h1>
+      <div className='flex justify-center items-center h-screen -my-28'>
+      <form onSubmit={handleSubmit(onSubmit)} className='w-1/3'>
         <div className="mb-4">
           <label htmlFor="title" className="block text-sm font-medium mb-2">Movie:</label>
           <select
             {...register('title', { required: true })}
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-slate-200"
           >
             <option value="">Select Movie</option>
             {movies.map((movie,index) => (
@@ -102,7 +103,7 @@ const AdminAddShow = () => {
           <label htmlFor="location" className="block text-sm font-medium mb-2">Location:</label>
           <select
             {...register('location', { required: true })} // Register theater ID
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-slate-200"
           >
             <option value="">Select Location</option>
             {theater.map((theaters,index) => (
@@ -118,7 +119,7 @@ const AdminAddShow = () => {
           <input
             {...register('date', { required: true })} 
             type="date"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-slate-200"
           />
            {errors.date && <span className="text-red-500 text-sm">Please select a date</span>}
           </div>
@@ -127,7 +128,7 @@ const AdminAddShow = () => {
           <input
             {...register('showtime', { required: true })} 
             type="time"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-slate-200"
           />
            {errors.showtime && <span className="text-red-500 text-sm">Please add Showtime</span>}
           </div>
@@ -136,14 +137,15 @@ const AdminAddShow = () => {
           <input
             {...register('price', { required: true ,pattern: /^\d+(\.\d{2})?$/ })}
             type="number"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"   
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-slate-200"   
           />
            {errors.price && <span className="text-red-500 text-sm">Please add Price</span>}
            </div>
-          <button type="submit" disabled={errors.title|| errors.theatername || errors.date || errors.showtime || errors.price}>
+          <button type="submit" disabled={errors.title|| errors.theatername || errors.date || errors.showtime || errors.price} className='bg-black text-gray-50 shadow-sm rounded-md w-full px-3 py-2 focus:outline-none'>
           Submit
         </button>
           </form>
+          </div>
           </div>
 
   )

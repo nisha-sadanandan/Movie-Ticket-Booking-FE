@@ -33,8 +33,10 @@ let adminSchema = yup.object({
         };
       
   return (
-    <div className='flex justify-center items-center h-screen'>
-         <form className='flex flex-col gap-3  w-1/4 ' onSubmit={handleSubmit(onSubmit)}>
+    <div>
+    <div className='h-screen flex flex-col items-center justify-center'> 
+    <h1 className='font-semibold text-4xl '>Login</h1> 
+         <form className='flex flex-col gap-3  w-1/4 mt-8' onSubmit={handleSubmit(onSubmit)}>
 
         <input {...register('email')} placeholder='email' type='email'
          className='px-1.5 py-1 border rounded-2xl border-neutral-500'/>
@@ -54,6 +56,7 @@ let adminSchema = yup.object({
       </p>
 
   </form>
+  </div>
   </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box,Text,Image} from "@chakra-ui/react"
-import home from "../images/homepage.jpg"
+import home from "../images/homepage.jpeg"
 
 const Home = () => {
   return (

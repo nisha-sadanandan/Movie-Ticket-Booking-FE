@@ -22,7 +22,6 @@ import UserMoviePage from "./pages/user/UserMoviePage.jsx";
 import AdminShowPage from './pages/admin/AdminShowPage.jsx';
 import AdminOverviewPage from './pages/admin/AdminOverviewPage.jsx';
 import Movie from './componets/user/Movie.jsx';
-import MovieDetail from './componets/user/movieDetails.jsx';
 import Home from './componets/home/Home.jsx';
 import AdminHome from './componets/admin/AdminHome.jsx';
 import OwnerHome from './componets/owner/OwnerHome.jsx';
@@ -33,6 +32,7 @@ import RatingMovie from './componets/user/RatingMovie.jsx';
 import MovieDescription from './componets/user/MovieDescription.jsx';
 import ShowListing from "./componets/user/ShowListing.jsx"
 import SeatLayout from './componets/user/SeatLayout.jsx';
+import AdminTheater from './componets/admin/AdminTheater.jsx';
 
 const router = createBrowserRouter([
   {
@@ -97,6 +97,11 @@ const router = createBrowserRouter([
     {
       path: "/admin/overview",
       element: <AdminOverviewPage/>
+    },
+
+    {
+      path: "/admin/overview/theater",
+      element: <AdminTheater/>
     },
 
   ]
@@ -200,32 +205,6 @@ const router = createBrowserRouter([
 
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
   ])

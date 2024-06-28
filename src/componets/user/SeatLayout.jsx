@@ -141,16 +141,33 @@ const SeatLayout = () => {
 
 
 
-  return (
-    
-    <div className="container mx-auto mt-8">
-      <h1>{show.totalprice}</h1>
-    <button className="btn btn-primary m-4 p-2 flex bg-green-800 text-white"   onClick={() => handleConfirm()}>
-      Confirm Seats {}
-    </button>
- 
-    <div className=" flex flex-wrap justify-center gap-5"> 
-
+  return ( 
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className='flex justify-between gap-32'>
+      <div className="mt-4"> 
+        <p>Available</p>       
+        <button
+          className="px-4 py-4 bg-gray-300 text-white "
+        >
+        </button>  
+         </div>
+      <div className="mt-4"> 
+        <p>Sold</p>       
+        <button
+          className="px-4 py-4 bg-red-600 text-white "
+        >
+        </button>  
+         </div>
+         <div className="mt-4">
+         <p>Selected</p> 
+        <button
+          className="px-4 py-4 bg-green-500 text-white "
+        >
+        </button>
+       </div>
+       </div>  
+       <div className='w-1/2 h-14 border border-gray-300 m-10  flex flex-col items-center justify-center  '>hey...Screen is here</div>
+    <div className=" flex flex-wrap justify-center gap-5 mt-20"> 
       {Array.from({ length: Math.ceil(SEAT_COUNT /10) }).map((_, row) => (
         <div key={row} className="seat-row flex flex-row justify-between gap-5"> 
           {Array(10).fill(null).map((_, col) => {
@@ -158,16 +175,16 @@ const SeatLayout = () => {
             const isAvailable = isSeatAvailable(row, col);
             const seatClass = isAvailable
               ? seat.some((seats) => seats.row === row && seats.col === col)
-                ? 'bg-green-500 text-white' 
+                ? 'bg-red-600 text-white' 
                 : 'bg-gray-200 hover:bg-gray-300'
-              : 'bg-red-400 text-white'; 
+              : 'bg-green-500 text-white'; 
 
 
             return (
               <div>
               <div
                 key={`${row}-${col}`}
-                className={` seat cursor-pointer px-2 py-2 text-center rounded-f ${seatClass}`} 
+                className={` w-12 h-12 border rounded text-center flex items-center justify-center cursor-pointer ${seatClass}`} 
                 onClick= {() => handleSeatClick(row, col)}>
                 {seatNumber}
               </div>
@@ -177,13 +194,24 @@ const SeatLayout = () => {
         </div>
       ))}
     </div>
-    <div className='flex justify-center'>
-    <button className="btn btn-primary m-4 p-2 flex bg-gray-500 text-white"  onClick={() => paymentHandler()}>
-      PayNow {price}Rs
-    </button>
-    </div>
-  </div>
-
+    <div className='flex justify-between gap-3'>
+      <div className="mt-4">        <button
+          className="px-4 py-2 bg-pink-600 text-white rounded"
+          onClick={() => handleConfirm()}
+        >
+          Book Seats
+        </button>  
+         </div>
+         <div className="mt-4">
+        <button
+          className="px-4 py-2 bg-red-900 text-white rounded"
+          onClick={() =>  paymentHandler()}
+        >
+          Paynow{price}
+        </button>
+       </div>
+       </div> 
+       </div> 
 
   )
 }

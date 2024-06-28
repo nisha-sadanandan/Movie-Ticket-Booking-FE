@@ -46,13 +46,14 @@ const AddShowByOwner = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Add Show</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="text-2xl font-bold mb-4 text-center">Add Show</h1>
+      <div className='flex justify-center items-center h-screen -m-16'>
+      <form onSubmit={handleSubmit(onSubmit)} className='w-1/4'>
         <div className="mb-4">
           <label htmlFor="title" className="block text-sm font-medium mb-2">Select Movie:</label>
           <select
             {...register('title', { required: true })}
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"
           >
             <option value="">Select Movie</option>
             {movies.map((movie,index) => (
@@ -68,7 +69,7 @@ const AddShowByOwner = () => {
           <input
             {...register('theatername', { required: true })} 
             type="text"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"
           />
            {errors.theatername && <span className="text-red-500 text-sm">Please select Theater name</span>}
           </div>
@@ -78,7 +79,7 @@ const AddShowByOwner = () => {
           <input
             {...register('location', { required: true })} 
             type="text"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"
           />
            {errors.date && <span className="text-red-500 text-sm">Please add location</span>}
           </div>
@@ -88,7 +89,7 @@ const AddShowByOwner = () => {
           <input
             {...register('date', { required: true })} 
             type="date"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"
           />
            {errors.date && <span className="text-red-500 text-sm">Please select a date</span>}
           </div>
@@ -97,7 +98,7 @@ const AddShowByOwner = () => {
           <input
             {...register('showtime', { required: true })} 
             type="time"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"
           />
            {errors.showtime && <span className="text-red-500 text-sm">Please add Showtime</span>}
           </div>
@@ -106,14 +107,15 @@ const AddShowByOwner = () => {
           <input
             {...register('price', { required: true ,pattern: /^\d+(\.\d{2})?$/ })}
             type="number"
-            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"   
+            className="shadow-sm rounded-md w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500  bg-neutral-300"   
           />
            {errors.price && <span className="text-red-500 text-sm">Please add Price</span>}
            </div>
-          <button type="submit" disabled={errors.movie|| errors.theatername || errors.date || errors.showtime || errors.price || errors.location}>
+          <button type="submit" disabled={errors.movie|| errors.theatername || errors.date || errors.showtime || errors.price || errors.location} className='bg-black text-gray-50 shadow-sm rounded-md w-full px-3 py-2 focus:outline-none'>
           Submit
         </button>
           </form>
+          </div>
           </div>
   )
 }

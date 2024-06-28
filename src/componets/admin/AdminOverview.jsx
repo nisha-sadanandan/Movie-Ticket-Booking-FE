@@ -1,14 +1,16 @@
-
 import axios from 'axios'
 import { useEffect,useState } from 'react'
 import { Grid, GridItem,SimpleGrid,Box, Center } from '@chakra-ui/react'
 import { Heading, Button,Stack } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AdminOverview =()=>{
 
     const[overview ,setOverview] = useState([])
+    const navigate = useNavigate()
+
 
     useEffect(()=>{
 
@@ -28,18 +30,16 @@ const AdminOverview =()=>{
     },[]);
 
 
+
+    const handleTheaterClick = () => {
+  
+      navigate("/admin/overview/theater")
+};
+
+
     return(
 
    <div>
-
-{/* <Grid 
-  templateAreas={`"header header"`}
-  gridTemplateRows={'50px 1fr 30px'}>
-  <GridItem pl='2'  area={'header'} fontSize='4xl' color="cyan.900" display="flex" alignItems="center" justifyContent="center">
-  WELCOME ADMIN
-  </GridItem>
-</Grid> */}
-
 <SimpleGrid
   bg='gray.50'
   columns={{ sm: 2, md: 4 }}
@@ -71,7 +71,7 @@ const AdminOverview =()=>{
   <Box boxShadow='2xl' p='6' rounded='2xl' bg='red.500' fontSize='4xl' cursor="pointer">
     Theaters 
     <Stack direction='row'  align='center' display="flex" alignItems="center" justifyContent="center" >
-  <Button colorScheme='teal' variant='outline' color="black" fontSize='xl'>
+  <Button colorScheme='teal' variant='outline' color="black" fontSize='xl' onClick={() => handleTheaterClick()}>
    GetDetails
   </Button>
 </Stack>

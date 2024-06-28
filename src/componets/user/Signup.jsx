@@ -42,8 +42,9 @@ let userSchema = yup.object({
        
   return (
     <div>
-       <div className='flex justify-center items-center h-screen'> 
-        <form className='flex flex-col gap-3  border-2w-full w-1/4' onSubmit={handleSubmit(onSubmit)}>
+       <div className='h-screen flex flex-col items-center justify-center'> 
+       <h1 className='font-semibold text-4xl '>SignUp</h1> 
+        <form className='flex flex-col gap-3  border-2w-full w-1/4 mt-8' onSubmit={handleSubmit(onSubmit)}>
         <input {...register('name')}
         placeholder='name' type='text'
          className='px-1.5 py-1 border rounded-2xl border-neutral-500' />
