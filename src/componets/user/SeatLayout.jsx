@@ -85,7 +85,7 @@ const SeatLayout = () => {
   const paymentHandler = async (event) => {
   
     const response = await axios.post(
-      "http://localhost:3000/api/v1/payment/order",
+      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
       { amount: price },
     );
 
