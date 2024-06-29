@@ -83,15 +83,14 @@ const SeatLayout = () => {
 
 
   const paymentHandler = async (event) => {
+  
     const response = await axios.post(
-      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
-      { amount:price },
+      "http://localhost:3000/api/v1/payment/order",
+      { amount: price },
     );
 
     const order = await response.data.data;
     console.log(order);
-
-
     const option = {
       key: import.meta.env.RAZORPAY_KEY_ID,
       amount: order.amount,
@@ -127,7 +126,7 @@ const SeatLayout = () => {
     };
 
    
-    const rzp1 = new window.Razorpay(option);
+    const rzp1 = new window.Razorpay({option});
 
     rzp1.on("payment.failed", function (response) {
       alert(response.error.code);
@@ -136,10 +135,6 @@ const SeatLayout = () => {
     rzp1.open();
     event.preventDefault();
   };
-
-
-
-
 
   return ( 
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
