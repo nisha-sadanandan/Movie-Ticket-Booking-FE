@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Heading, Text, Grid, GridItem, Image, Button } from '@chakra-ui/react';
+import { Skeleton, SkeletonCircle, SkeletonText,Stack } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import banner from "../images/banner.jpeg"
 
@@ -56,7 +57,11 @@ const MovieList = () => {
           ))}
         </Grid>
       ) : (
-        <Text>No movies found.</Text>
+        <Stack>
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+</Stack>
       )}
     </Box>
     </div>
