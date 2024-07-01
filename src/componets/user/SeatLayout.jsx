@@ -133,7 +133,7 @@ const SeatLayout = () => {
     });
 
     rzp1.open();
-    // event.preventDefault();
+    event.preventDefault();
   };
 
   return ( 
