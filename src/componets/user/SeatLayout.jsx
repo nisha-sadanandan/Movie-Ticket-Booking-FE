@@ -85,7 +85,7 @@ const SeatLayout = () => {
   const paymentHandler = async (event) => {
   
     const response = await axios.post(
-      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
+      "http://localhost:3000/api/v1/payment/order",
       { amount: price },
     );
 
@@ -126,7 +126,7 @@ const SeatLayout = () => {
     };
 
    
-    const rzp1 = new window.Razorpay({option});
+    const rzp1 = new window.Razorpay(option);
 
     rzp1.on("payment.failed", function (response) {
       alert(response.error.code);
