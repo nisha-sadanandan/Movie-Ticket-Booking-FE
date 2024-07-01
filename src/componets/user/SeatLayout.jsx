@@ -91,7 +91,7 @@ const SeatLayout = () => {
 
     const order = await response.data.data;
     console.log(order);
-    const option = {
+    const options = {
       key: import.meta.env.RAZORPAY_KEY_ID,
       amount: order.amount,
       currency: order.currency,
@@ -126,14 +126,14 @@ const SeatLayout = () => {
     };
 
    
-    const rzp1 = new window.Razorpay(option);
+    const rzp1 = new window.Razorpay(options);
 
     rzp1.on("payment.failed", function (response) {
       alert(response.error.code);
     });
 
     rzp1.open();
-    event.preventDefault();
+    // event.preventDefault();
   };
 
   return ( 
