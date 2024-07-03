@@ -22,7 +22,7 @@ const ShowListing = () => {
 
       const fetchShow = async () => {
         try {
-          const response = await axios.get(`https://movie-ticket-booking-serverside.onrender.com/api/v1/show/${title}/get-show`); 
+          const response = await axios.get(`https://movie-ticket-booking-serverside-be.onrender.com/api/v1/show/${title}/get-show`); 
           setShow(response.data);
         } catch (error) {
           console.error('Error fetching show:', error);

@@ -13,7 +13,7 @@ const AdminTheater = () => {
     useEffect(() => {
       const fetchTheaters = async () => {
         try {
-          const response = await axios.get('https://movie-ticket-booking-serverside.onrender.com/api/v1/theater/get-theater'); 
+          const response = await axios.get('https://movie-ticket-booking-serverside-be.onrender.com/api/v1/theater/get-theater'); 
           settheater(response.data);
         } catch (error) {
           console.error('Error fetching thetaers:', error);

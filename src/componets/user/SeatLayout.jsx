@@ -19,7 +19,7 @@ const SeatLayout = () => {
 
       const fetchShow = async () => {
         try {
-          const response = await axios.get(`https://movie-ticket-booking-serverside.onrender.com/api/v1/show/${showid}/getshow`); 
+          const response = await axios.get(`https://movie-ticket-booking-serverside-be.onrender.com/api/v1/show/${showid}/getshow`); 
           setShow(response.data);
         } catch (error) {
           console.error('Error fetching show:', error);
@@ -63,7 +63,7 @@ const SeatLayout = () => {
         seat:seat
       }
       const res = await axios.post(
-        `https://movie-ticket-booking-serverside.onrender.com/api/v1/booking/reserve-seat`,
+        `https://movie-ticket-booking-serverside-be.onrender.com/api/v1/booking/reserve-seat`,
         data,
       );
       console.log(res.data);
@@ -83,7 +83,7 @@ const SeatLayout = () => {
   const paymentHandler = async (event) => {
   
     const response = await axios.post(
-      "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/order",
+      "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/payment/order",
       { amount: price },
     );
 
@@ -102,7 +102,7 @@ const SeatLayout = () => {
 
 
         const validateResponse = await axios.post(
-          "https://movie-ticket-booking-serverside.onrender.com/api/v1/payment/verify",
+          "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/payment/verify",
           body,
         );
 

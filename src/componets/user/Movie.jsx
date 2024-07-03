@@ -12,7 +12,7 @@ const MovieList = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get('https://movie-ticket-booking-serverside.onrender.com/api/v1/movie/get-movie'); 
+        const response = await axios.get('https://movie-ticket-booking-serverside-be.onrender.com/api/v1/movie/get-movie'); 
         setMovies(response.data);
       } catch (error) {
         console.error('Error fetching movies:', error);

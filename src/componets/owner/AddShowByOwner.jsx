@@ -17,7 +17,7 @@ const AddShowByOwner = () => {
     const getMovies = async()=>{
         try {
 
-            const res = await axios.get("https://movie-ticket-booking-serverside.onrender.com/api/v1/movie/get-movie")
+            const res = await axios.get("https://movie-ticket-booking-serverside-be.onrender.com/api/v1/movie/get-movie")
             const data = await res.data
             console.log("movies",data)
             setMovies(data)  
@@ -32,7 +32,7 @@ const AddShowByOwner = () => {
  const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "https://movie-ticket-booking-serverside.onrender.com/api/v1/owner/add-show",
+        "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/owner/add-show",
         data,
       );
       console.log(res.data);

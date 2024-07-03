@@ -17,7 +17,7 @@ const AdminOverview =()=>{
         const getOverview =async()=>{
             try {
 
-                const res = await axios.get("https://movie-ticket-booking-serverside.onrender.com/api/v1/admin/get-overview")
+                const res = await axios.get("https://movie-ticket-booking-serverside-be.onrender.com/api/v1/admin/get-overview")
                 const data = await res.data;
                 console.log("overview" ,data)
                 setOverview(data)

@@ -15,7 +15,7 @@ useEffect(()=>{
     const getMovie =async()=>{
         try {
 
-            const res = await axios.get("https://movie-ticket-booking-serverside.onrender.com/api/v1/movie/get-movie")
+            const res = await axios.get("https://movie-ticket-booking-serverside-be.onrender.com/api/v1/movie/get-movie")
             const data = await res.data;
             console.log("getmovie" ,data)
             setMovie(data)
