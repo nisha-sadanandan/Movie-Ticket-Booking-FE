@@ -5,14 +5,11 @@ import { useParams } from 'react-router-dom';
 
 
 
-
-
-
 const SEAT_COUNT = 100;
 
 const SeatLayout = () => {
 
-  const [seat, setseats] = useState([]); 
+  const [seat, setSeats] = useState([]); 
   const [show, setShow] = useState([]);
   const {showid} = useParams();
 
@@ -38,9 +35,9 @@ const SeatLayout = () => {
   const handleSeatClick = (row, col) => {
     const seatIndex = seat.findIndex((seats) => seats.row === row && seats.col === col);
     if (seatIndex !== -1) {
-      setseats(seat.filter((seats) => seats !== seat[seatIndex]));
+      setSeats(seat.filter((seats) => seats !== seat[seatIndex]));
     } else {
-      setseats([...seat, { row, col }]);
+      setSeats([...seat, { row, col }]);
     }
   };
 
@@ -70,6 +67,7 @@ const SeatLayout = () => {
         data,
       );
       console.log(res.data);
+      alert('seat reserved suceessfully...please proceed the payment')
      
     } catch (error) {
       console.log(error);
@@ -134,6 +132,7 @@ const SeatLayout = () => {
 
     rzp1.open();
     event.preventDefault();
+
   };
 
   return ( 
@@ -146,13 +145,6 @@ const SeatLayout = () => {
         >
         </button>  
          </div>
-      <div className="mt-4"> 
-        <p>Sold</p>       
-        <button
-          className="px-4 py-4 bg-red-600 text-white "
-        >
-        </button>  
-         </div>
          <div className="mt-4">
          <p>Selected</p> 
         <button
@@ -161,7 +153,7 @@ const SeatLayout = () => {
         </button>
        </div>
        </div>  
-       <div className='w-1/2 h-14 border border-gray-300 m-10  flex flex-col items-center justify-center  '>hey...Screen is here</div>
+       <div className='w-1/2 h-14 border border-gray-300 m-10  flex flex-col items-center justify-center'>hey...Screen is here</div>
     <div className=" flex flex-wrap justify-center gap-5 mt-20"> 
       {Array.from({ length: Math.ceil(SEAT_COUNT /10) }).map((_, row) => (
         <div key={row} className="seat-row flex flex-row justify-between gap-5"> 
@@ -202,7 +194,7 @@ const SeatLayout = () => {
           className="px-4 py-2 bg-red-900 text-white rounded"
           onClick={() =>  paymentHandler()}
         >
-          Paynow{price}
+          Paynow {price}Rs
         </button>
        </div>
        </div> 
@@ -212,3 +204,11 @@ const SeatLayout = () => {
 }
 
 export default SeatLayout
+
+
+
+
+
+
+
+

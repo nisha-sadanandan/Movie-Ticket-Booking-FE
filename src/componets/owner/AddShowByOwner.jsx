@@ -36,6 +36,7 @@ const AddShowByOwner = () => {
         data,
       );
       console.log(res.data);
+      alert("submission suceessful")
       // navigate("/admin/login")
      
     } catch (error) {

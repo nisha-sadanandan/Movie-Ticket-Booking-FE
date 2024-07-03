@@ -34,6 +34,7 @@ import ShowListing from "./componets/user/ShowListing.jsx"
 import SeatLayout from "./componets/user/SeatLayout.jsx"
 import AdminTheater from './componets/admin/AdminTheater.jsx';
 
+
 const router = createBrowserRouter([
   {
     element:<HomeLayout/>,
