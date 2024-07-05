@@ -40,13 +40,13 @@ let adminSchema = yup.object({
 
         <input {...register('email')} placeholder='email' type='email'
          className='px-1.5 py-1 border rounded-2xl border-neutral-500'/>
-         {errors.email && <p>{errors.email.message}</p>}   
+         {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}   
 
         <input {...register('password')} placeholder='password'  type='password'
          className='px-2 py-1 border rounded-2xl border-neutral-500'/>
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
-       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-700 text-white'  />
+       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-700 text-white cursor-pointer'  />
 
        <p>
         Don't have an account?{" "}
