@@ -33,6 +33,8 @@ import MovieDescription from './componets/user/MovieDescription.jsx';
 import ShowListing from "./componets/user/ShowListing.jsx"
 import SeatLayout from "./componets/user/SeatLayout.jsx"
 import AdminTheater from './componets/admin/AdminTheater.jsx';
+import AdminUser from './componets/admin/AdminUser.jsx';
+import AdminShow from './componets/admin/AdminShow.jsx';
 
 
 const router = createBrowserRouter([
@@ -104,6 +106,17 @@ const router = createBrowserRouter([
       path: "/admin/overview/theater",
       element: <AdminTheater/>
     },
+
+    {
+      path: "/admin/overview/users",
+      element: <AdminUser/>
+    },
+
+    {
+      path: "/admin/overview/show",
+      element: <AdminShow/>
+    },
+
 
   ]
 },
