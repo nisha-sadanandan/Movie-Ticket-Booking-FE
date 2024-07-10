@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect,useState } from 'react'
 import {useForm} from "react-hook-form"
+import { useNavigate } from 'react-router-dom'
 
 const AdminAddShow = () => {
 
@@ -10,6 +11,9 @@ const AdminAddShow = () => {
    
     const [movies,setMovies] = useState([])
     const [theater,setTheater] = useState([])
+    const [showPopup,setShowPopup] = useState(false)
+
+    const navigate = useNavigate()
 
     
      useEffect(()=>{
@@ -55,12 +59,18 @@ const AdminAddShow = () => {
           data,
         );
         console.log(res.data);
-        alert("submission suceessful")
-        // navigate("/admin/login")
+        setShowPopup(true);
+       
        
       } catch (error) {
         console.log(error);
       }
+    };
+
+
+    const handleClose = () => {
+      setShowPopup(false);
+      navigate("/admin");
     };
 
   return (
@@ -144,7 +154,20 @@ const AdminAddShow = () => {
           <button type="submit" disabled={errors.title|| errors.theatername || errors.date || errors.showtime || errors.price} className='bg-black text-gray-50 shadow-sm rounded-md w-full px-3 py-2 focus:outline-none'>
           Submit
         </button>
-          </form>
+          </form>     
+      {showPopup && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-lg'>
+            <p className='mb-4'>Show Added successfully</p>
+            <button
+              className='bg-black text-white px-4 py-2 rounded'
+              onClick={handleClose}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
           </div>
           </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -8,12 +8,16 @@ import { Link,useNavigate} from "react-router-dom";
 
 
 let adminSchema = yup.object({
-  email: yup.string().email(),
-  password: yup.string().min(6),
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required(),
 
 });
 
    const AdminLogin = () => {
+
+    const [loginSuccess, setLoginSuccess] = useState(false);
+    const [loginError, setLoginError] = useState(null);
+
     const navigate = useNavigate();
           
         const {register,handleSubmit,formState:{errors}} = useForm({
@@ -25,12 +29,42 @@ let adminSchema = yup.object({
               "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/admin/login",
               data,
             );
-            console.log(res.data);
-            navigate("/admin")
+
+            if (res.status === 200) {
+              const responseMessage = res.data;
+      
+              if (responseMessage === "logged sucessfully") {
+                setLoginSuccess(true);
+              } else {
+                setLoginError(responseMessage);
+              }
+            } else {
+              setLoginError('Login failed. Please check your credentials.');
+            }
           } catch (error) {
-            console.log(error);
+            if (error.response) {
+              setLoginError(error.response.data.message || 'Login failed. Please check your credentials.');
+            } else if (error.request) {
+              setLoginError('No response from server. Please try again later.');
+            } else {
+              setLoginError('An error occurred. Please try again.');
+            }
+            console.error(error);
           }
         };
+
+        const handleSuccessClose = () => {
+          setLoginSuccess(false);
+          navigate("/admin");
+        };
+
+       
+        //     console.log(res.data);
+        //     navigate("/admin")
+        //   } catch (error) {
+        //     console.log(error);
+        //   }
+        // };
       
   return (
     <div>
@@ -46,8 +80,14 @@ let adminSchema = yup.object({
          className='px-2 py-1 border rounded-2xl border-neutral-500'/>
         {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
-       <input type="submit" placeholder='Submit' className='px-2 py-1 border rounded-2xl bg-red-700 text-white cursor-pointer'  />
+        <input
+          type="submit"
+          placeholder='Submit'
+          className='px-2 py-1 border rounded-2xl bg-red-700 text-white cursor-pointer'
+        />
 
+        {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
+        
        <p>
         Don't have an account?{" "}
         <Link to="/admin/signup" className="text-red-500 underline">
@@ -56,6 +96,21 @@ let adminSchema = yup.object({
       </p>
 
   </form>
+
+  {loginSuccess && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-lg'>
+            <h2 className='text-2xl mb-4'>Login Successfully!</h2>
+            <p className='mb-4'>You have successfully logged in.</p>
+            <button
+              className='bg-red-700 text-white px-4 py-2 rounded'
+              onClick={handleSuccessClose}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
   </div>
   </div>
   )

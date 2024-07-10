@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -7,13 +7,16 @@ import { Link,useNavigate } from "react-router-dom";
 
 
 let adminSchema = yup.object({
-  name: yup.string().required(),
-  email: yup.string().email(),
-  password: yup.string().min(6),
+  name: yup.string().required().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required(),
 
 });
 
       const AdminSignup = () => {
+
+        const [signupSuccess, setSignupSuccess] = useState(false);
+
         const navigate = useNavigate();
           
         const {register,handleSubmit,formState:{errors}} = useForm({
@@ -25,13 +28,26 @@ let adminSchema = yup.object({
               "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/admin/signup",
               data,
             );
-            console.log(res.data);
-            navigate("/admin/login")
-           
+
+            if (res.status === 200) {
+              const responseMessage = res.data;
+      
+              if (responseMessage === "Signed Successfully") {
+                setSignupSuccess(true);
+              } 
+            } 
           } catch (error) {
-            console.log(error);
+
+            console.error(error);
           }
         };
+
+        const handleSuccessClose = () => {
+          setSignupSuccess(false);
+          navigate("/admin/login");
+        };
+
+
       
   return (
     <div>
@@ -61,6 +77,22 @@ let adminSchema = yup.object({
         </p>
 
   </form>
+
+  {signupSuccess && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-lg'>
+            <h2 className='text-2xl mb-4'>Signup Successfully!</h2>
+            <p className='mb-4'>You have successfully Signup.</p>
+            <button
+              className='bg-red-700 text-white px-4 py-2 rounded'
+              onClick={handleSuccessClose}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+
+)}
   </div>
   </div>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect,useState } from 'react'
 import {useForm} from "react-hook-form"
+import { useNavigate } from 'react-router-dom'
 
 
 const AddShowByOwner = () => {
@@ -11,6 +12,8 @@ const AddShowByOwner = () => {
 
    
   const [movies,setMovies] = useState([])
+  const [showPopup,setShowPopup] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(()=>{
 
@@ -36,13 +39,18 @@ const AddShowByOwner = () => {
         data,
       );
       console.log(res.data);
-      alert("submission suceessful")
-      // navigate("/admin/login")
-     
+      setShowPopup(true);
+
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleClose = () => {
+    setShowPopup(false);
+    navigate("/owner");
+  };
+
  
 
   return (
@@ -116,6 +124,20 @@ const AddShowByOwner = () => {
           Submit
         </button>
           </form>
+
+          {showPopup && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-lg'>
+            <p className='mb-4'>Show Added successfully</p>
+            <button
+              className='bg-black text-white px-4 py-2 rounded'
+              onClick={handleClose}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
           </div>
           </div>
   )

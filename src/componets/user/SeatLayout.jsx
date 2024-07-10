@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +13,7 @@ const SeatLayout = () => {
   const [seat, setSeats] = useState([]); 
   const [show, setShow] = useState([]);
   const {showid} = useParams();
+  const navigate = useNavigate();
 
 
  
@@ -89,6 +91,8 @@ const SeatLayout = () => {
 
     const order = await response.data.data;
     console.log(order);
+
+
     const options = {
       key: import.meta.env.RAZORPAY_KEY_ID,
       amount: order.amount,
@@ -97,7 +101,7 @@ const SeatLayout = () => {
       description: "Test Transaction",
       image: "https://i.ibb.co/5Y3m33n/test.png",
       order_id: order.id,
-      handler: async function (response) {
+       handler: async function (response) {
         const body = { ...response };
 
 
@@ -108,8 +112,12 @@ const SeatLayout = () => {
 
         const jsonResponse = await validateResponse;
 
-        console.log("jsonResponse", jsonResponse);
+        console.log("jsonResponse", jsonResponse)
+
       },
+
+      
+      
       prefill: {
         name: "Nisha",
         email: "nishanaveen@example.com",
@@ -130,10 +138,11 @@ const SeatLayout = () => {
       alert(response.error.code);
     });
 
+  
     rzp1.open();
-    event.preventDefault();
-
+    event.preventDefault();  
   };
+
 
   return ( 
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
@@ -182,7 +191,8 @@ const SeatLayout = () => {
       ))}
     </div>
     <div className='flex justify-between gap-3'>
-      <div className="mt-4">        <button
+      <div className="mt-4">        
+        <button
           className="px-4 py-2 bg-pink-600 text-white rounded"
           onClick={() => handleConfirm()}
         >

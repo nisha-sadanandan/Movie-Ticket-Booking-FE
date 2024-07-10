@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -18,30 +18,47 @@ let userSchema = yup.object({
 
 
      const Signup = () => {
+
+      const [signupSuccess, setSignupSuccess] = useState(false);
+
       
       const navigate = useNavigate();
         const {register,handleSubmit,formState:{errors}} = useForm({
           resolver: yupResolver(userSchema),
         })
         const onSubmit = async (data) => {
+
+
+          
           try {
             const res = await axios.post(
               "https://movie-ticket-booking-serverside-be.onrender.com/api/v1/users/signup",
               data,
             );
-            console.log(res.data);  
-            navigate("/user/login")
 
+          
+            if (res.status === 200) {
+              const responseMessage = res.data;
+      
+              if (responseMessage === "Signed Successfully") {
+                setSignupSuccess(true);
+              } 
+            } 
           } catch (error) {
-            console.log(error);
-          }
 
+            console.error(error);
+          }
+        };
+
+        const handleSuccessClose = () => {
+          setSignupSuccess(false);
+          navigate("/user/login");
         };
 
        
        
   return (
-    <div>
+  
        <div className='h-screen flex flex-col items-center justify-center'> 
        <h1 className='font-semibold text-4xl '>SignUp</h1> 
         <form className='flex flex-col gap-3  border-2w-full w-1/4 mt-8' onSubmit={handleSubmit(onSubmit)}>
@@ -59,6 +76,7 @@ let userSchema = yup.object({
         {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
        <input type="submit" placeholder='Submit' className='px-2 py-1 border-2   rounded-2xl bg-red-600 text-white cursor-pointer'/>
+      
        <p>
          Already have an account?{" "}
         <Link to="/user/login" className="text-red-500 underline">
@@ -66,8 +84,23 @@ let userSchema = yup.object({
         </Link>
         </p>
   </form>
-  </div>
-  // </div> 
+  {signupSuccess && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-lg'>
+            <h2 className='text-2xl mb-4'>Signup Successfully!</h2>
+            <p className='mb-4'>You have successfully Signup.</p>
+            <button
+              className='bg-red-700 text-white px-4 py-2 rounded'
+              onClick={handleSuccessClose}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+
+)}
+    </div>
+   
   )
 }
 
